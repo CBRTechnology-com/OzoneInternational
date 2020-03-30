@@ -1,0 +1,38 @@
+{
+  "id": "970a5ef2-8819-4a87-b1e6-9ccf76f08590",
+  "name": "Ozone Customization BC15",
+  "publisher": "CBR Technology Corp",
+  "version": "1.0.0.30",
+  "brief": "",
+  "description": "",
+  "privacyStatement": "",
+  "EULA": "",
+  "help": "",
+  "url": "",
+  "logo": "",
+  "dependencies": [
+    {
+      "appId": "63ca2fa4-4f03-4f2b-a480-172fef340d3f",
+      "publisher": "Microsoft",
+      "name": "System Application",
+      "version": "1.0.0.0"
+    },
+    {
+      "appId": "437dbf0e-84ff-417a-965d-ed2bb9650972",
+      "publisher": "Microsoft",
+      "name": "Base Application",
+      "version": "15.0.0.0"
+    }
+  ],
+  "screenshots": [],
+  "platform": "15.0.0.0",
+  "idRanges": [
+    {
+      "from": 50000,
+      "to": 59999
+    }
+  ],
+  "contextSensitiveHelpUrl": "https://Ozone_Customization_CU15.com/help/",
+  "showMyCode": true,
+  "runtime": "4.0"
+}
