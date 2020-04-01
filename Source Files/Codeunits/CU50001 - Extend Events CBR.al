@@ -194,6 +194,11 @@ codeunit 50001 ExtendEventsCBR
         // EmailCu.CreateEmails(7, Rec."No.", false, true);
     end;
 
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Req. Wksh.-Make Order", 'OnAfterInsertPurchOrderHeader', '', true, true)]
+    local procedure OnAfterInsertPurchOrderHeader(VAR RequisitionLine: Record "Requisition Line"; VAR PurchaseOrderHeader: Record "Purchase Header"; CommitIsSuppressed: Boolean)
+    begin
+        PurchaseOrderHeader."Ordered for" := RequisitionLine."Ordered for";
+    end;
 
 
 }

@@ -7,6 +7,10 @@ tableextension 50014 ExtendRequisitionLine extends "Requisition Line"
             OptionMembers = "","Transfer Order","Sales Order","Production Order","Assembly Order";
             OptionCaption = ' ,Transfer Order,Sales Order,Production Order,Assembly Order';
         }
+        field(50004; "Ordered for"; Text[50])
+        {
+            Caption = 'Ordered for';
+        }
     }
 
     var

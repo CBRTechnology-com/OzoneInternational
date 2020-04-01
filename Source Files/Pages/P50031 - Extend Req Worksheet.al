@@ -8,6 +8,10 @@ pageextension 50031 ExtendReqWorksheet extends "Req. Worksheet"
             {
                 ApplicationArea = All;
             }
+            field("Ordered for"; "Ordered for")
+            {
+                ApplicationArea = All;
+            }
         }
     }
 
