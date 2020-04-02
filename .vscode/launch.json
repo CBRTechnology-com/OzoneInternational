@@ -1,6 +1,22 @@
 {
     "version": "0.2.0",
     "configurations": [
+        
+        {
+            "name": "My attach to local server",
+            "type": "al",
+            "request": "attach",
+            "server": "https://localhost",
+            "serverInstance": "BC150",
+            "authentication": "Windows",
+            "breakOnError": true,
+            "breakOnRecordWrite": false,
+            "enableSqlInformationDebugger": true,
+            "enableLongRunningSqlStatements": true,
+            "longRunningSqlStatementsThreshold": 500,
+            "numberOfSqlStatements": 10,
+            "breakOnNext": "WebClient"
+        },
         {
             "type": "al",
             "request": "launch",
@@ -8,13 +24,16 @@
             "server": "http://localhost",
             "serverInstance": "BC150",
             "authentication": "Windows",
+            
             "port": 7049,
             "startupObjectId": 22,
             "startupObjectType": "Page",
             "breakOnError": true,
             "launchBrowser": true,
             "enableLongRunningSqlStatements": true,
-            "enableSqlInformationDebugger": true
+            "enableSqlInformationDebugger": true,
+            "schemaUpdateMode": "Recreate"
+
         }
     ]
 }

@@ -200,5 +200,10 @@ codeunit 50001 ExtendEventsCBR
         PurchaseOrderHeader."Ordered for" := RequisitionLine."Ordered for";
     end;
 
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::ReqJnlManagement, 'OnAfterSetUpNewLine', '', true, true)]
+    local procedure CopyOldLineValues(VAR ReqLine: Record "Requisition Line"; VAR LastReqLine: Record "Requisition Line")
+    begin
+        ReqLine."Ordered for" := LastReqLine."Ordered for";
+    end;
 
 }
