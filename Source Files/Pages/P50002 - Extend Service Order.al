@@ -36,6 +36,27 @@ pageextension 50002 ExtendServiceOrder extends "Service Order"
                 ToolTip = 'View all the ledger entries for the service item or service order that result from posting transactions in service documents.';
             }
         }
+        addafter("O&rder")
+        {
+            action(OpenUserCard)
+            {
+                ApplicationArea = All;
+                Caption = 'Open User Task Card';
+                Image = Open;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+                ShortCutKey = 'Alt+D';
+
+                trigger OnAction()
+                var
+                    CBRCodeunit: Codeunit ExtendEventsCBR;
+                begin
+
+                    CBRCodeunit.OpenUserTaskPage('Service Order', "No.");
+                end;
+            }
+        }
         modify(Post)
         {
             trigger OnBeforeAction()
@@ -92,4 +113,5 @@ pageextension 50002 ExtendServiceOrder extends "Service Order"
     // end;
     // OZI0002 <<
     // end;
+
 }

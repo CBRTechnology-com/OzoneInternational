@@ -27,6 +27,29 @@ pageextension 50029 ExtendPurchaseOrder extends "Purchase Order"
     actions
     {
         // Add changes to page actions here
+        addbefore(Dimensions)
+        {
+
+            action(OpenUserCard)
+            {
+                ApplicationArea = All;
+                Caption = 'Open User Task Card';
+                Image = Open;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+                ShortCutKey = 'Alt+D';
+
+                trigger OnAction()
+                var
+                    CBRCodeunit: Codeunit ExtendEventsCBR;
+                begin
+
+                    CBRCodeunit.OpenUserTaskPage('Purchase Order', "No.");
+                end;
+            }
+
+        }
         addafter(Dimensions)
         {
             action(TrackPackage)
@@ -47,10 +70,12 @@ pageextension 50029 ExtendPurchaseOrder extends "Purchase Order"
                 end;
             }
 
-
         }
+
+
     }
 
     var
         myInt: Integer;
+
 }

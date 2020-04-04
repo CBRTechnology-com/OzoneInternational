@@ -206,4 +206,16 @@ codeunit 50001 ExtendEventsCBR
         ReqLine."Ordered for" := LastReqLine."Ordered for";
     end;
 
+    procedure OpenUserTaskPage(DocType: Text[30]; DocumentNo: Code[20])
+    var
+        UserTask: Record "User Task";
+        TaskID: Integer;
+    begin
+        UserTask.CBRCreateUserTask(DocType, DocumentNo, TaskID);
+        COMMIT;
+        IF UserTask.GET(TaskID) THEN
+            PAGE.RUNMODAL(PAGE::"User Task Card", UserTask);
+
+    end;
+
 }
