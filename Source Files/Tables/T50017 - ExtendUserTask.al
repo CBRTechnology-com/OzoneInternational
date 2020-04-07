@@ -3,6 +3,11 @@ tableextension 50017 ExtendUserTask extends "User Task"
     Caption = 'User task';
     fields
     {
+        field(50000; "Link Document No"; code[20])
+        {
+            Caption = 'Link Document No.';
+
+        }
 
     }
 
@@ -14,6 +19,16 @@ tableextension 50017 ExtendUserTask extends "User Task"
         DateValue := CALCDATE('1D', TODAY);
         UserTask."Start DateTime" := CREATEDATETIME(DateValue, TIME);
         UserTask."Due DateTime" := CREATEDATETIME(DateValue, TIME);
+        UserTask.validate("Object Type", UserTask."Object Type"::Page);
+        UserTask."Link Document No" := DocNo;
+        case DocType of
+            'Service Order':
+                UserTask.Validate("Object ID", 5900);
+            'Sales Order':
+                UserTask.Validate("Object ID", 42);
+            'Purchase Order':
+                UserTask.Validate("Object ID", 56);
+        end;
         UserTask.INSERT(TRUE);
         TaskID := UserTask.ID;
     end;

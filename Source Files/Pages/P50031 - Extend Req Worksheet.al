@@ -7,6 +7,8 @@ pageextension 50031 ExtendReqWorksheet extends "Req. Worksheet"
             field("Source Document Type"; "Source Document Type")
             {
                 ApplicationArea = All;
+                Visible = false;
+
             }
             field("Ordered for"; "Ordered for")
             {
@@ -23,7 +25,7 @@ pageextension 50031 ExtendReqWorksheet extends "Req. Worksheet"
             action(Copyalues)
             {
                 ApplicationArea = Planning;
-                Caption = 'Copy Values';
+                Caption = 'Fill Down';
                 Ellipsis = true;
                 Image = CopyCosttoGLBudget;
                 Promoted = true;
