@@ -206,6 +206,10 @@ report 50011 "CBR Purchase Order"
 
 
                         }
+                        column(Quantity; Quantity)
+                        {
+
+                        }
                         //CBR_SS--
 
                         column(UnitPriceToPrint; UnitPriceToPrint)

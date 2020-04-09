@@ -247,6 +247,12 @@ End Function
         <Field Name="CBRVendorItemNo">
           <DataField>CBRVendorItemNo</DataField>
         </Field>
+        <Field Name="Quantity">
+          <DataField>Quantity</DataField>
+        </Field>
+        <Field Name="QuantityFormat">
+          <DataField>QuantityFormat</DataField>
+        </Field>
         <Field Name="UnitPriceToPrint">
           <DataField>UnitPriceToPrint</DataField>
         </Field>
