@@ -8,6 +8,11 @@ tableextension 50017 ExtendUserTask extends "User Task"
             Caption = 'Link Document No.';
 
         }
+        field(50001; "CBR Notes"; Blob)
+        {
+            Caption = 'Notes';
+
+        }
 
     }
 
@@ -44,6 +49,27 @@ tableextension 50017 ExtendUserTask extends "User Task"
             EXIT(UserTaskRec.ID + 1)
         ELSE
             EXIT(1);
+    end;
+
+    procedure SetCBRNotes(StreamText: Text)
+    var
+        OutStream: OutStream;
+    begin
+        Clear("CBR Notes");
+        "CBR Notes".CreateOutStream(OutStream, TEXTENCODING::Windows);
+        OutStream.Write(StreamText);
+        if Modify(true) then;
+    end;
+
+    procedure GetCBRNotes(): Text
+    var
+        TempBlob: Codeunit "Temp Blob";
+        TypeHelper: Codeunit "Type Helper";
+        InStream: InStream;
+    begin
+        TempBlob.FromRecord(Rec, FieldNo(Description));
+        TempBlob.CreateInStream(InStream, TEXTENCODING::Windows);
+        exit(TypeHelper.ReadAsTextWithSeparator(InStream, TypeHelper.LFSeparator));
     end;
 
     var

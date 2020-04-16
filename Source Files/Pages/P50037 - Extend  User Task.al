@@ -8,6 +8,31 @@ pageextension 50037 ExtendUserTask extends "User Task Card" //MyTargetPageId
             {
                 ApplicationArea = all;
             }
+            field(CBRMultiLineTextControl; CBRMultiLineTextControl)
+            {
+                ApplicationArea = Basic, Suite;
+                Caption = 'Notes';
+                MultiLine = true;
+                ToolTip = 'Specifies Notes.';
+
+                trigger OnValidate()
+                begin
+                    SetDescription(CBRMultiLineTextControl);
+                end;
+            }
+
+        }
+        addfirst(FactBoxes)
+        {
+            part("Attached Documents"; "Document Attachment Factbox")
+            {
+                ApplicationArea = All;
+                Caption = 'Attachments';
+                SubPageLink = "Table ID" = CONST(1170),
+                              "No." = FIELD("Link Document No");
+
+            }
+
         }
     }
 
@@ -31,9 +56,17 @@ pageextension 50037 ExtendUserTask extends "User Task Card" //MyTargetPageId
                 end;
             }
         }
-
-
     }
+    trigger OnAfterGetRecord()
+    begin
+        CBRMultiLineTextControl := GetCBRNotes();
+    end;
+
+    trigger OnNewRecord(BelowxRec: Boolean)
+    begin
+        Clear(CBRMultiLineTextControl);
+    end;
+
     local procedure OpenRelatedDocumentLinkl()
     var
         ServiceHeader: Record "Service Header";
@@ -58,5 +91,9 @@ pageextension 50037 ExtendUserTask extends "User Task Card" //MyTargetPageId
                         Page.Run(Page::"Purchase Order", PurchaseHeader);
                 end;
         end;
+
     end;
+
+    var
+        CBRMultiLineTextControl: Text;
 }
